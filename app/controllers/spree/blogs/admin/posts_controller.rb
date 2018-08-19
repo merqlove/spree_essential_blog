@@ -31,7 +31,7 @@ class Spree::Blogs::Admin::PostsController < Spree::Admin::ResourceController
   end
 
   def permitted_resource_params
-    return ActionController::Parameters.new unless params[resource.object_name].present? 
+    return ActionController::Parameters.new unless params[resource.object_name].present?
     params.require(resource.object_name).permit(:blog_id,
                                                 :title,
                                                 :name,

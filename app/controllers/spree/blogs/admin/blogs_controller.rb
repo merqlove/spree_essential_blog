@@ -18,6 +18,7 @@ class Spree::Blogs::Admin::BlogsController < Spree::Admin::ResourceController
   end
 
   def permitted_resource_params
-    params[resource.object_name].present? ? params.require(resource.object_name).permit(:name, :permalink) : ActionController::Parameters.new
+    return ActionController::Parameters.new unless params[resource.object_name].present?
+    params.require(resource.object_name).permit(:name, :permalink)
   end
 end

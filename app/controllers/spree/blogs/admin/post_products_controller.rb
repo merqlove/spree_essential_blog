@@ -22,6 +22,7 @@ class Spree::Blogs::Admin::PostProductsController < Spree::Admin::BaseController
   end
 
   def permitted_resource_params
-    params[resource.object_name].present? ? params.require(resource.object_name).permit(:post_id, :product_id, :position) : ActionController::Parameters.new
+    return ActionController::Parameters.new unless params[resource.object_name].present?
+    params.require(resource.object_name).permit(:post_id, :product_id, :position)
   end
 end

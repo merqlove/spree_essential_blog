@@ -35,7 +35,10 @@ class Spree::Blogs::Admin::PostImagesController < Spree::Admin::ResourceControll
   end
 
   def permitted_resource_params
-    params[resource.object_name].present? ? params.require(resource.object_name).permit(:alt, :attachment) : ActionController::Parameters.new
+    return ActionController::Parameters.new unless params[resource.object_name].present?
+    params.require(resource.object_name).permit(:delete_attachment,
+                                                :alt,
+                                                :attachment)
   end
 
 end
