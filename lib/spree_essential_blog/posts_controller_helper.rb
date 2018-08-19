@@ -15,7 +15,7 @@ module SpreeEssentialBlog::PostsControllerHelper
 
   def get_sidebar
     @archive_posts = default_scope.limit(10)
-    @post_categories = @blog.categories.order(:name).all
+    @post_categories = @blog.categories.order(:name)
     get_tags
   end
 

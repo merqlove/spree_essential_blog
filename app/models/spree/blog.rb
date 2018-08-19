@@ -2,7 +2,7 @@ class Spree::Blog < ActiveRecord::Base
   RESERVED_PATHS = %r{(^\/*(admin|account|cart|checkout|content|login|pg|orders|products|s|session|signup|shipments|states|t|tax_categories|user)\/+)}
 
   has_many :posts, :class_name => 'Spree::Post', :dependent => :destroy
-  has_many :categories, -> { uniq }, :through => :posts, :source => :post_categories
+  has_many :categories, -> { distinct }, :through => :posts, :source => :post_categories
 
   validates :name, :presence => true
   validates :permalink, :uniqueness => true, :format => { :with => %r{[a-z0-9\-\_\/]+\z}i }, :length => { :within => 3..40 }

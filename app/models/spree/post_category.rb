@@ -3,7 +3,7 @@ class Spree::PostCategory < ActiveRecord::Base
   validates :name, :presence => true
   validates :permalink, :presence => true, :uniqueness => true, :if => proc{ |record| !record.name.blank? }
 
-  has_and_belongs_to_many :posts, -> { uniq }, :join_table => 'spree_post_categories_posts'
+  has_and_belongs_to_many :posts, -> { distinct }, :join_table => 'spree_post_categories_posts'
 
   before_validation :create_permalink
 
