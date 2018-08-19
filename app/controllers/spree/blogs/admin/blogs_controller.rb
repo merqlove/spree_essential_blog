@@ -11,8 +11,8 @@ class Spree::Blogs::Admin::BlogsController < Spree::Admin::ResourceController
   end
 
   def collection
-    params[:search] ||= {}
-    params[:search][:meta_sort] ||= "name.asc"
+    params[:q] ||= {}
+    params[:q][:s] ||= "name asc"
     @search = Spree::Blog.search(params[:q])
     @collection = @search.result.page(params[:page]).per(Spree::Config[:admin_orders_per_page])
   end

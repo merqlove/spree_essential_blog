@@ -24,8 +24,8 @@ class Spree::Blogs::Admin::PostsController < Spree::Admin::ResourceController
   end
 
   def collection
-    params[:search] ||= {}
-    params[:search][:meta_sort] ||= "posted_at.desc"
+    params[:q] ||= {}
+    params[:q][:s] ||= "posted_at desc"
     @search = Spree::Post.search(params[:q])
     @collection = @search.result.page(params[:page]).per(Spree::Config[:admin_orders_per_page])
   end
@@ -34,6 +34,7 @@ class Spree::Blogs::Admin::PostsController < Spree::Admin::ResourceController
     return ActionController::Parameters.new unless params[resource.object_name].present? 
     params.require(resource.object_name).permit(:blog_id,
                                                 :title,
+                                                :name,
                                                 :teaser,
                                                 :body,
                                                 :posted_at,
