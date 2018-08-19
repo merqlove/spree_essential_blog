@@ -10,7 +10,7 @@ class Spree::Post < ActiveRecord::Base
   belongs_to :blog, :class_name => "Spree::Blog"
   has_many :post_products, :dependent => :destroy
   has_many :products, :through => :post_products
-  has_many :images, :as => :viewable, :class_name => "Spree::PostImage", :order => :position, :dependent => :destroy
+  has_many :images, -> { order(:position) }, :as => :viewable, :class_name => "Spree::PostImage", :dependent => :destroy
 
   validates :blog_id, :title, :presence => true
   validates :path,  :presence => true, :uniqueness => true, :if => proc{ |record| !record.title.blank? }
@@ -20,10 +20,10 @@ class Spree::Post < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 10
 
-  scope :ordered, order("posted_at DESC")
-  scope :future,  where("posted_at > ?", Time.now).order("posted_at ASC")
-  scope :past,    where("posted_at <= ?", Time.now).ordered
-  scope :live,    where(:live => true )
+  scope :ordered, -> { order("posted_at DESC") }
+  scope :future,  -> { where("posted_at > ?", Time.now).order("posted_at ASC") }
+  scope :past,    -> { where("posted_at <= ?", Time.now).ordered }
+  scope :live,    -> { where(:live => true) }
 
   before_validation :create_path, :if => proc{ |record| record.title_changed? }
 
