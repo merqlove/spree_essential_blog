@@ -31,7 +31,7 @@ class Spree::Post < ActiveRecord::Base
   # Creates date-part accessors for the posted_at timestamp for grouping purposes.
   %w(day month year).each do |method|
     define_method method do
-      self.posted_at.send(method)
+      posted_at.send(method)
     end
   end
 
