@@ -1,4 +1,4 @@
-Spree::Core::Engine.add_routes do
+Spree::Core::Engine.append_routes do
 
   scope(:module => 'blogs') do
 
