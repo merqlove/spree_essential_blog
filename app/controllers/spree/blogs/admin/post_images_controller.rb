@@ -1,5 +1,5 @@
 class Spree::Blogs::Admin::PostImagesController < Spree::Admin::ResourceController
-  
+
   before_filter :load_data
 
   create.before :set_viewable
@@ -15,9 +15,9 @@ class Spree::Blogs::Admin::PostImagesController < Spree::Admin::ResourceControll
       format.js  { render :text => 'Ok' }
     end
   end
-  
+
   private
-  
+
   def location_after_save
     admin_post_images_url(@post)
   end
@@ -32,6 +32,10 @@ class Spree::Blogs::Admin::PostImagesController < Spree::Admin::ResourceControll
 
   def destroy_before
     @viewable = @post_image.viewable
+  end
+
+  def permitted_resource_params
+    params[resource.object_name].present? ? params.require(resource.object_name).permit(:alt, :attachment) : ActionController::Parameters.new
   end
 
 end

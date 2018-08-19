@@ -1,8 +1,14 @@
 <%= render :partial => 'spree/admin/shared/configuration_menu' %>
 
-<h1>Listing Blogs</h1>
+<% content_for :page_title do %>
+  Listing Blogs
+<% end %>
 
-<table class="index">
+<% content_for :page_actions do %>
+  <%= button_link_to  t("new_blog"), new_admin_blog_url, :icon => 'add', :class => "btn-success", :id => "new_blog_link" %>
+<% end if can? :create, Spree::PostImage %>
+
+<table class="index table">
   <thead>
 	<tr>
     	<th><%= sort_link @search, :name, t("activerecord.attributes.blog.name") %></th>
@@ -27,10 +33,6 @@
 <%= paginate @collection %>
 
 <div id="new_blog"></div>
-<br/>
-<p>
-    <%= link_to icon('add') + ' ' + t(".new_blog"), new_admin_blog_url, :id => "new_blog_link" %>
-</p>
 
 <% content_for :head do %>
   <script type="text/javascript">

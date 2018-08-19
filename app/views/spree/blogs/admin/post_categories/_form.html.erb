@@ -1,8 +1,14 @@
-<p>
-  <%= form.label :name, t("activerecord.attributes.post_category.name") %>:<br/>
-  <%= form.text_field :name, :class => 'text' %>
-</p>
-<p>
-  <%= form.label :permalink, t("activerecord.attributes.post_category.permalink") %>:<br/>
-  <%= form.text_field :permalink, :class => 'text' %>
-</p>
+<div class="row">
+  <div class="col-md-3">
+    <%= form.field_container :name, class: ['form-group'] do %>
+      <%= form.label :name, t("activerecord.attributes.post_category.name") %>
+      <%= form.text_field :name, :class => 'text form-control' %>
+    <% end %>
+  </div>
+  <div class="col-md-3">
+    <%= form.field_container :permalink, class: ['form-group'] do %>
+      <%= form.label :permalink, t("activerecord.attributes.post_category.permalink") %>
+      <%= form.text_field :permalink, :class => 'text form-control' %>
+    <% end %>
+  </div>
+</div>

@@ -1,10 +1,14 @@
 <%= render :partial => 'spree/blogs/admin/shared/post_tabs', :locals => {:current => "Categories"} %>
 
+<% content_for :page_actions do %>
+  <%= button_link_to  t("new_category"), new_admin_post_category_url(@post), :icon => 'add', :class => "btn-success", :id => "btn_new_category" %>
+<% end if can? :create, Spree::PostCategory %>
+
 <div id="categories-box">
   <%= form_for([:admin, @post]) do |f| %>
     <fieldset>
       <legend><%= t('.manage_categories') %></legend>
-      <table class="index">
+      <table class="index table">
         <% @post_categories.each_with_index do |category, index| -%>
           <tr id="<%= dom_id(category) %>" class="<%= index % 2 == 0 ? 'alt' : 'row' %>">
             <td>
@@ -26,9 +30,6 @@
 </div>
   
 <div id="new_category"></div>
-  
-<p><%= link_to icon('add') + ' ' + t("new_category"), new_admin_post_category_url(@post), :id => "btn_new_category" %></p>
-  
 
 <% content_for :head do %>
   <script type="text/javascript">

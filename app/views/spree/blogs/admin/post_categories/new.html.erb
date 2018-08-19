@@ -1,14 +1,14 @@
 <%= render :partial => 'spree/blogs/admin/shared/post_tabs', :locals => {:current => "Categories"} unless request.xhr? %>
 
-<h3><%= t("new_category") %></h3>
-
-<% if @post_category.try(:errors).present? %>
-  <%= render 'spree/shared/error_messages', :target => @post_category %>
+<% content_for :page_title do %>
+  <%= t(".new_category") %>
 <% end %>
 
-<%= form_for(@post_category, :url => admin_post_categories_path(@post)) do |form| %>
-  <%= render "form", :form => form %>
-  <p class="form-buttons">
-    <%= button t("create") %>
-  </p>
+<%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @post_category } %>
+
+<%= form_for(@post_category, :url => admin_post_categories_path(@post)) do |f| %>
+  <fieldset>
+    <%= render :partial => 'form', :form => f %>
+    <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+  </fieldset>
 <% end %>

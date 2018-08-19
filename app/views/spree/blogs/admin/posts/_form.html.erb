@@ -1,36 +1,47 @@
-<%= form.field_container :blog_id do %>
-  <%= form.label :blog_id, t("activerecord.attributes.blog.model_name") %><br />
-  <%= form.select :blog_id, Spree::Blog.to_options, :class => 'title' %>
-  <%= error_message_on :post, :blog_id %>
-<% end %>
+<div class="row">
+  <div class="col-md-6">
+    <%= form.field_container :blog_id, class: ['form-group'] do %>
+      <%= form.label :blog_id, t("activerecord.attributes.blog.model_name") %>
+      <%= form.select :blog_id, Spree::Blog.to_options, :class => 'title form-control' %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= form.field_container :title, class: ['form-group'] do %>
+      <%= form.label :title, t("activerecord.attributes.post.title") %>
+      <%= form.text_field :title, :class => 'title form-control' %>
+    <% end %>
+  </div>
+</div>
 
-<%= form.field_container :title do %>
-  <%= form.label :title, t("activerecord.attributes.post.title") %><br />
-  <%= form.text_field :title, :class => 'title' %>
-  <%= error_message_on :post, :title %>
-<% end %>
+<div class="row">
+  <div class="col-md-6">
+    <%= form.field_container :posted_at, class: ['form-group'] do %>
+      <%= form.label :posted_at, t("activerecord.attributes.post.posted_at") %>
+      <%= form.text_field :posted_at, :class => 'text form-control', :value => ((l @post.posted_at, :format => :long) unless @post.posted_at.nil?) %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= form.field_container :body, class: ['form-group'] do %>
+      <%= form.label :body, t("activerecord.attributes.post.body") %><%= markdown_helper %>
+      <%= form.text_area :body, class: 'form-control'  %>
+    <% end %>
+  </div>
+</div>
 
-<%= form.field_container :posted_at do %>
-  <%= form.label :posted_at, t("activerecord.attributes.post.posted_at") %><br />
-  <%= form.text_field :posted_at, :class => 'text', :value => ((l @post.posted_at, :format => :long) unless @post.posted_at.nil?) %><br />
-  <%= error_message_on :post, :posted_at %>
-<% end %>
-
-<%= form.field_container :body do %>
-  <%= form.label :body, t("activerecord.attributes.post.body") %><%= markdown_helper %><br />
-  <%= form.text_area :body  %>
-  <%= error_message_on :post, :body %>
-<% end %>
-
-<%= form.field_container :tag_list do %>
-  <%= form.label :tag_list, t("activerecord.attributes.post.tags") %><br />
-  <%= form.text_field :tag_list, :class => 'text' %><br />
-  <%= error_message_on :post, :tag_list %>
-<% end %>
-
-<%= form.field_container :live do %>
-  <%= form.check_box :live  %> <%= form.label :live, t("activerecord.attributes.post.live") %><br />
-<% end %>
+<div class="row">
+  <div class="col-md-6">
+    <%= form.field_container :tag_list, class: ['form-group'] do %>
+      <%= form.label :tag_list, t("activerecord.attributes.post.tags") %>
+      <%= form.text_field :tag_list, :class => 'text form-control' %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <%= form.field_container :live, class: ['form-group'] do %>
+      <%= form.label :live, t("activerecord.attributes.post.live") %>
+      <%= form.check_box :live, class: 'form-control' %>
+    <% end %>
+  </div>
+</div>
 
 <% content_for :head do %>
   <script type="text/javascript">
