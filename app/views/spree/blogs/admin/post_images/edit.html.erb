@@ -8,7 +8,7 @@
       <%= label_tag ("thumbnail") %>:<br/>
       <%= link_to(image_tag(@post_image.attachment.url(:mini)), @post_image.attachment.url(:product)) %>
     </p>
-    <%= render :partial => 'form', :form => f %>
+    <%= render :partial => 'form', :locals => { :form => f } %>
     <%= hidden_field_tag :post_id, @post.path, :class => 'hidden' %>
     <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
   </fieldset>

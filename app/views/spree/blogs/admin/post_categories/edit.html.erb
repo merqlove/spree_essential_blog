@@ -8,7 +8,7 @@
 
 <%= form_for([:admin, @post, @post_category], :url => admin_post_category_path(@post, @post_category.id)) do |f| %>
   <fieldset>
-  <%= render :partial => 'form', :form => f %>
+  <%= render :partial => 'form', :locals => { :form => f } %>
     <%= hidden_field_tag :post_id, @post.path, :class => 'hidden' %>
   <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
   </fieldset>
