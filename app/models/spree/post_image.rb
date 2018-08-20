@@ -1,11 +1,12 @@
 class Spree::PostImage < Spree::Asset
-  validates_attachment_presence :attachment
-
   has_attached_file :attachment,
-                    :styles => Proc.new{ |clip| clip.instance.attachment_sizes },
+                    :styles => lambda { |clip| clip.instance.attachment_sizes },
                     :default_style => :medium,
                     :url => '/spree/posts/:id/:style/:basename.:extension',
                     :path => ':rails_root/public/spree/posts/:id/:style/:basename.:extension'
+
+  validates_attachment :attachment,
+                       :presence => true
 
   def image_content?
     attachment_content_type.to_s.match(/\/(jpeg|png|gif|tiff|x-photoshop)/)
