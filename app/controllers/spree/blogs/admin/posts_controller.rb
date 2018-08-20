@@ -2,6 +2,7 @@ module Spree
   module Blogs
     module Admin
       class PostsController < Spree::Admin::ResourceController
+        include Spree::BlogsCustomResource
 
         update.before :set_category_ids
 
@@ -46,10 +47,6 @@ module Spree
                                                       :tag_list,
                                                       :post_category_ids,
                                                       :product_ids_string)
-        end
-
-        def model_class
-          Spree::Post
         end
       end
 

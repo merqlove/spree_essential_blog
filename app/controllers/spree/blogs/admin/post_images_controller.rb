@@ -1,4 +1,5 @@
 class Spree::Blogs::Admin::PostImagesController < Spree::Admin::ResourceController
+  include Spree::BlogsCustomResource
 
   before_action :load_data
 
@@ -39,9 +40,5 @@ class Spree::Blogs::Admin::PostImagesController < Spree::Admin::ResourceControll
     params.require(resource.object_name).permit(:delete_attachment,
                                                 :alt,
                                                 :attachment)
-  end
-
-  def model_class
-    Spree::PostImage
   end
 end

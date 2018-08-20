@@ -1,4 +1,5 @@
 class Spree::Blogs::Admin::PostCategoriesController < Spree::Admin::ResourceController
+  include Spree::BlogsCustomResource
 
   before_action :load_data
 
@@ -16,9 +17,5 @@ class Spree::Blogs::Admin::PostCategoriesController < Spree::Admin::ResourceCont
   def permitted_resource_params
     return ActionController::Parameters.new unless params[resource.object_name].present?
     params.require(resource.object_name).permit(:name, :permalink)
-  end
-
-  def model_class
-    Spree::PostCategory
   end
 end

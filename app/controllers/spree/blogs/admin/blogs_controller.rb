@@ -1,4 +1,5 @@
 class Spree::Blogs::Admin::BlogsController < Spree::Admin::ResourceController
+  include Spree::BlogsCustomResource
 
   def show
     redirect_to admin_blogs_path
@@ -20,9 +21,5 @@ class Spree::Blogs::Admin::BlogsController < Spree::Admin::ResourceController
   def permitted_resource_params
     return ActionController::Parameters.new unless params[resource.object_name].present?
     params.require(resource.object_name).permit(:name, :permalink)
-  end
-
-  def model_class
-    Spree::Blog
   end
 end

@@ -1,4 +1,5 @@
 class Spree::Blogs::Admin::PostProductsController < Spree::Admin::BaseController
+  include Spree::BlogsCustomResource
 
   before_action :load_data
 
@@ -24,9 +25,5 @@ class Spree::Blogs::Admin::PostProductsController < Spree::Admin::BaseController
   def permitted_resource_params
     return ActionController::Parameters.new unless params[resource.object_name].present?
     params.require(resource.object_name).permit(:post_id, :product_id, :position)
-  end
-
-  def model_class
-    Spree::PostProduct
   end
 end
