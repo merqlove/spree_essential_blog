@@ -18,4 +18,7 @@ class Spree::Blogs::Admin::PostCategoriesController < Spree::Admin::ResourceCont
     params.require(resource.object_name).permit(:name, :permalink)
   end
 
+  def model_class
+    Spree::PostCategory
+  end
 end

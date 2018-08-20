@@ -41,4 +41,7 @@ class Spree::Blogs::Admin::PostImagesController < Spree::Admin::ResourceControll
                                                 :attachment)
   end
 
+  def model_class
+    Spree::PostImage
+  end
 end
