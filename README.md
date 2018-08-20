@@ -18,6 +18,9 @@ Otherwise, follow these steps to get up and running with spree_essential_blog:
 First, add spree_essential_blog to your Gemfile... it hasn't been released to Rubygems yet so we'll grab it from git.
 
 ```ruby
+# Spree 3.x
+gem 'spree_essential_blog', :git => 'git://github.com/citrus/spree_essential_blog.git', :branch => 'develop'
+
 # Spree 1.1.x
 gem 'spree_essential_blog', :git => 'git://github.com/citrus/spree_essential_blog.git', :branch => 'master'
 
@@ -112,6 +115,11 @@ Setup is complete. Open `localhost:3000/blog` in your browser to see your posts.
 Change Log
 ------------------------------------------------------------------------------
 
+**3.0.0.rc1 - 2018/8/18**
+
+* Add support for Spree 3.x, Rails 5.x, Ruby 2.x
+
+
 **0.1.0 - 2011/12/15**
 
 * Release v0.1.0
@@ -156,6 +164,7 @@ Change Log
 Contributors
 ------------------------------------------------------------------------------
 
+* Alexander Merkulov ([@merqlove](https://github.com/merqlove))
 * Spencer Steffen ([@citrus](https://github.com/citrus))
 * Milo Delgado ([@moladukes](https://github.com/moladukes))
 * Pierre Basil ([@kpitn](https://github.com/kpitn))
