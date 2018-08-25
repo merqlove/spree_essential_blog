@@ -7,7 +7,7 @@ Spree::Core::Engine.append_routes do
       resources :blogs, :constraints => { :id => /[a-z0-9\-\_\/]{3,}/ }
 
       resources :posts do
-        resources :images,   :controller => 'post_images' do
+        resources :images, :controller => 'post_images' do
           collection do
             post :update_positions
           end
