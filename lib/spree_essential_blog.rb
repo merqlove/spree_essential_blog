@@ -11,7 +11,7 @@ module SpreeEssentialBlog
   end
 
   def self.sub_tab
-    [:posts, { :label => "spree.admin.subnav.posts", :match_path => "/posts" }]
+    [:posts, { :label => Spree.t("admin.subnav.posts"), :match_path => "/posts" }]
   end
 
 end
