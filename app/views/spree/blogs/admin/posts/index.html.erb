@@ -24,8 +24,8 @@
       <td><%= l post.posted_at, :format => :date_time %></td>
       <td><%= post.live ? 'Yes' : 'No' %></td>
       <td>
-      	<%= link_to_edit post %> &nbsp;
-      	<%= link_to_delete post %>
+      	<%= link_to_edit post, :no_text => true %> &nbsp;
+      	<%= link_to_delete post, :no_text => true %>
       </td>
     </tr>
     <% end %>

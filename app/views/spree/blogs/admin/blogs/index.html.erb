@@ -22,8 +22,8 @@
       <td><%= blog.name %></td>
       <td><%= blog.permalink %></td>
       <td>
-      	<%= link_to_edit blog %> &nbsp;
-      	<%= link_to_delete blog %>
+      	<%= link_to_edit blog, :no_text => true %> &nbsp;
+      	<%= link_to_delete blog, :no_text => true %>
       </td>
     </tr>
     <% end %>
