@@ -38,14 +38,14 @@
   <div class="box">
     <h3><%= t(:search) %></h3>
     <%= search_form_for [:admin, @search] do |f| %>
-      <p>
+      <%= f.field_container :blog_id_eq, class: ['form-group'] do %>
         <%= f.label :blog_id_eq, t("activerecord.attributes.blog.model_name") %><br />
-        <%= f.select :blog_id_eq, Spree::Blog.to_options, :selected => (params[:q][:blog_id_eq] if params[:q]), :include_blank => true %>
-      </p>
-      <p>
+        <%= f.select :blog_id_eq, Spree::Blog.to_options, {:selected => (params[:q][:blog_id_eq] if params[:q]), :include_blank => true}, :class => "form-control" %>
+      <% end %>
+      <%= f.field_container :title_cont, class: ['form-group'] do %>
         <%= f.label :title_cont, t("activerecord.attributes.post.title") %><br />
-        <%= f.text_field :title_cont, :size => 25 %>
-      </p>
+        <%= f.text_field :title_cont, :size => 25, :class => "form-control" %>
+      <% end %>
       <p><%= button t("search") %></p>
     <% end %>
   </div>
