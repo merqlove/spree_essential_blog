@@ -13,7 +13,7 @@ class Spree::Blogs::Admin::PostImagesController < Spree::Admin::ResourceControll
     end
 
     respond_to do |format|
-      format.js  { render :text => 'Ok' }
+      format.js  { render :plain => '' }
     end
   end
 
