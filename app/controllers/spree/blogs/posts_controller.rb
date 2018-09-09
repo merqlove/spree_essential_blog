@@ -1,6 +1,6 @@
 class Spree::Blogs::PostsController < Spree::BaseController
 
-  include SpreeEssentialBlog::PostsControllerHelper
+  include Spree::PostsControllerHelper
 
   helper "spree/products"
 

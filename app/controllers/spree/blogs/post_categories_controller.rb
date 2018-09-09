@@ -1,6 +1,6 @@
 class Spree::Blogs::PostCategoriesController < Spree::BaseController
 
-  include SpreeEssentialBlog::PostsControllerHelper
+  include Spree::PostsControllerHelper
 
   before_action :get_sidebar, :only => [:index, :search, :show]
 
