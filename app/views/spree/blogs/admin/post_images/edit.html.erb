@@ -2,7 +2,7 @@
 
 <%= render :partial => 'spree/admin/shared/error_messages', :locals => { :target => @post_image } %>
 
-<%= form_for([:admin, @post, @post_image], :url => admin_post_image_url(@post, @post_image), :html => { :multipart => true }) do |f| %>
+<%= form_for([:admin, @post, @post_image], :url => admin_post_image_url(@post, @post_image), :html_wrap => { :multipart => true }) do |f| %>
   <fieldset>
     <p>
       <%= label_tag ("thumbnail") %>:<br/>
