@@ -14,6 +14,16 @@ module SpreeEssentialBlog
     [:posts, { :label => Spree.t("admin.subnav.posts"), :match_path => "/posts" }]
   end
 
+  class << self
+    def route_regex
+      @route_regex ||= ""
+    end
+
+    def route_regex=(value)
+      @route_regex = value
+    end
+  end
+
 end
 
 SpreeEssentials.register :blog, SpreeEssentialBlog
