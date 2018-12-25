@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = ['lib']
 
-  s.add_runtime_dependency('acts-as-taggable-on', '~> 5.0.0')
+  s.add_runtime_dependency('acts-as-taggable-on', '~> 5.0')
   s.add_runtime_dependency('spree_essentials',    '>= 1.0')
 
   s.add_development_dependency('capybara',     '~> 3.6.0')
