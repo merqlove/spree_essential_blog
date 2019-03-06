@@ -1,9 +1,9 @@
 <% content_for :page_actions do %>
-  <%= button_link_to "New Post", new_object_url, :icon => 'add', :class => "btn-success" %>
+  <%= button_link_to t(".new_post"), new_object_url, :icon => 'add', :class => "btn-success" %>
 <% end if can? :create, Spree::Post %>
 
 <% content_for :page_title do %>
-  Listing Posts
+  <%= t(".listing_posts") %>
 <% end %>
 
 <table class="index table">
@@ -13,7 +13,7 @@
     	<th><%= sort_link @search, :blog,  t("activerecord.attributes.blog.model_name") %></th>
     	<th><%= sort_link @search, :posted_at, t("activerecord.attributes.post.posted_at") %></th>
     	<th><%= sort_link @search, :live, t("activerecord.attributes.post.live") %></th>
-    	<th><%= t("action") %></th>
+    	<th><%= Spree.t("action") %></th>
 	</tr>
   </thead>
   <tbody>
@@ -36,7 +36,7 @@
 
 <% content_for :sidebar do %>
   <div class="box">
-    <h3><%= t(:search) %></h3>
+    <h3><%= Spree.t("search") %></h3>
     <%= search_form_for [:admin, @search] do |f| %>
       <%= f.field_container :blog_id_eq, class: ['form-group'] do %>
         <%= f.label :blog_id_eq, t("activerecord.attributes.blog.model_name") %><br />
@@ -46,7 +46,7 @@
         <%= f.label :title_cont, t("activerecord.attributes.post.title") %><br />
         <%= f.text_field :title_cont, :size => 25, :class => "form-control" %>
       <% end %>
-      <p><%= button t("search") %></p>
+      <p><%= button Spree.t("search") %></p>
     <% end %>
   </div>
 <% end %>

@@ -16,7 +16,7 @@
               <%= label_tag "post_category_id_#{index}", category.name -%>
             </td>
             <td class="options" style="width: 120px">
-              <%= link_to_with_icon('edit', t("edit"), edit_admin_post_category_url(@post, category.id), :no_text => true) %> &nbsp;
+              <%= link_to_with_icon('edit', Spree.t("edit"), edit_admin_post_category_url(@post, category.id), :no_text => true) %> &nbsp;
               <%= link_to_delete category, {:url => admin_post_category_url(@post, category.id), :no_text => true} %>
             </td>
           </tr>
@@ -24,7 +24,7 @@
       </table>
       <%= hidden_field_tag "post[post_category_ids][]", 0 %>
       <%= hidden_field_tag :redirect_to, request.fullpath %>
-      <%= button t("update") %>
+      <%= button Spree.t("update") %>
     </fieldset>
   <% end %>
 </div>
