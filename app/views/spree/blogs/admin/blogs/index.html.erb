@@ -1,9 +1,9 @@
-n<% content_for :page_title do %>
-  Listing Blogs
+<% content_for :page_title do %>
+  <%= t(".listing_blogs") %>
 <% end %>
 
 <% content_for :page_actions do %>
-  <%= button_link_to  t("new_blog"), new_admin_blog_url, :icon => 'add', :class => "btn-success", :id => "new_blog_link" %>
+  <%= button_link_to  t(".new_blog"), new_admin_blog_url, :icon => 'add', :class => "btn-success", :id => "new_blog_link" %>
 <% end if can? :create, Spree::Blog %>
 
 <table class="index table">
@@ -11,7 +11,7 @@ n<% content_for :page_title do %>
 	<tr>
     	<th><%= sort_link @search, :name, t("activerecord.attributes.blog.name") %></th>
     	<th><%= sort_link @search, :live, t("activerecord.attributes.blog.permalink") %></th>
-    	<th><%= t("action") %></th>
+    	<th><%= Spree.t("action") %></th>
 	</tr>
   </thead>
   <tbody>

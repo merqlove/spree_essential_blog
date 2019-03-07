@@ -22,7 +22,7 @@
         <td><%= link_to(image_tag(image.attachment.url(:mini)), image.attachment.url(:large)) %></td>
         <td><%= image.alt %></td>
         <td class="actions">
-          <%= link_to_with_icon('edit', t("edit"), edit_admin_post_image_url(@post, image)) %>
+          <%= link_to_with_icon('edit', Spree.t("edit"), edit_admin_post_image_url(@post, image)) %>
           &nbsp;
           <%= link_to_delete image, {:url => admin_post_image_url(@post, image) }%>
         </td>
