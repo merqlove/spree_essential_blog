@@ -1,5 +1,18 @@
 Spree::Core::Engine.append_routes do
 
+  class PossibleBlog
+    def self.matches?(request)
+      fullpath = request.fullpath
+      return false unless fullpath.match?(%r{/([a-z0-9\-\_\/]{3,})})
+      return false if fullpath.match?(%r{(^\/+(#{SpreeEssentialBlog.route_regex}admin|account|cart|checkout|content|login|pg\/|orders|products|s\/|session|signup|shipments|states|t\/|tax_categories|user)+)})
+
+      blog_id = %r{/([a-z0-9\-\_]{3,})}.match(fullpath)
+      return false unless blog_id
+
+      Spree::Blog.exists?(permalink: blog_id[1])
+    end
+  end
+
   scope(:module => 'blogs') do
 
     namespace :admin do
@@ -19,9 +32,7 @@ Spree::Core::Engine.append_routes do
       resource :disqus_settings
 
     end
-
-    constraints :blog_id => %r{#{SpreeEssentialBlog.route_regex}([a-z0-9\-\_\/]{3,})} do
-
+    constraints(PossibleBlog) do
       constraints(
         :year  => /\d{4}/,
         :month => /\d{1,2}/,
