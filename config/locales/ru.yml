@@ -1,0 +1,107 @@
+---
+ru:
+
+  # Spree Hax! Missing translation...
+  image_settings_description: "Настройки изображений"
+
+  activerecord:
+    attributes:
+      blog:
+        model_name: Блог
+        name: Название
+        permalink: Путь
+      post:
+        model_name: Новость
+        title: Заголовок
+        posted_at: Размещено
+        body: Тело
+        live: Опубликовано
+        tags: Теги
+      post_category:
+        model_name: Категория
+        name: Названия
+        permalink: Путь
+
+  spree:
+
+    admin:
+      subnav:
+        posts: Новости
+
+    blogs:
+      admin:
+        blogs:
+          new:
+            new_blog: Новый блог
+          index:
+            new_blog: Новый блог
+
+
+        posts:
+          new:
+            new_post: Создание новости
+        post_products:
+          index:
+            add_related_product: Добавить связанные товары
+        post_categories:
+          index:
+            manage_categories: Редактировать категории
+        new:
+          new_category: Создание категории
+        edit:
+          edit_category: Редактирование категории
+
+        shared:
+          post_tabs:
+            post_details: Детали новости
+            editing_post: Редактирование новости
+            related_products: Связанные продукты
+            post_categories: Категории
+      comments: Комментарии
+      home:
+        title: Последние новости
+      archive: Архив блога
+      no_posts: Новостей не найдено
+      posts:
+        index:
+          blog: Блог
+          rss: Подписаться по RSS
+        archive:
+          title: Архив
+          where_to_next: Куда дальше?
+          go_to_store: "Перейти в магазин"
+          back_to_posts: "Вернуться к записям"
+        show:
+          tagged: Теги
+      settings:
+        blogs: Управлять блогами
+        explain_blogs: Управлять блогами.
+        disqus: Настройки Disqus
+        explain_disqus: Настроить Disqus.
+        disqus_shortname: Disqus логин
+      shared:
+        sidebar:
+          recent_posts: Последние новости
+          categories: Категории
+          archives: Архив
+          view_archive: Посмотреть архив
+          tags: Теги
+        preview:
+          read_more: Далее
+        post_tabs:
+          editing_post: Редактирование новости
+          post_details: Детали новости
+          related_products: Связанные продукты
+          post_categories: Категории
+      subnav:
+        posts: Новости блога
+
+  time:
+    formats:
+      date_time: "%x %X"
+      date_full: "%A %B %d, %Y"
+      detailed: "%A %B %d, %Y at %I:%M%p"
+      date_only: "%x"
+  date:
+    formats:
+      month_year: "%B %Y"
